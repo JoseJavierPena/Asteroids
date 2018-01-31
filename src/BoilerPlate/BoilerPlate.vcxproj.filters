@@ -18,6 +18,7 @@
     <ClCompile Include="Vector2.cpp">
       <Filter>Engine\Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -35,6 +36,7 @@
     <ClInclude Include="Vector2.hpp">
       <Filter>Engine\Header files</Filter>
     </ClInclude>
+    <ClInclude Include="Vector3.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
