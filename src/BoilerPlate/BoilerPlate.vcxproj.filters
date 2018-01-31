@@ -16,7 +16,7 @@
       <Filter>Colors</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
-      <Filter>Vector</Filter>
+      <Filter>Engine\Source files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -33,7 +33,7 @@
       <Filter>Colors</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.hpp">
-      <Filter>Vector</Filter>
+      <Filter>Engine\Header files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -51,9 +51,6 @@
     </Filter>
     <Filter Include="Colors">
       <UniqueIdentifier>{02e8ade7-8443-4833-8068-bcbf9e31b632}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vector">
-      <UniqueIdentifier>{0d9459ef-b6ef-4340-ba94-db5c7655cc46}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

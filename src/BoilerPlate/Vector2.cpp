@@ -1,10 +1,14 @@
 #include "Vector2.hpp"
 
-Vector2::Vector2()
+namespace Engine
 {
-}
-
-
-Vector2::~Vector2()
-{
+	namespace Math
+	{
+		Vector2::Vector2()
+		{}
+		Vector2::Vector2(float, float)
+		{}
+		Vector2::Vector2(float)
+		{}
+	}
 }
