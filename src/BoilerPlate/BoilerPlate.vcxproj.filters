@@ -15,6 +15,9 @@
     <ClCompile Include="ChangeColor.cpp">
       <Filter>Colors</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Vector</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -28,6 +31,9 @@
     </ClInclude>
     <ClInclude Include="ChangeColor.hpp">
       <Filter>Colors</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.hpp">
+      <Filter>Vector</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +51,9 @@
     </Filter>
     <Filter Include="Colors">
       <UniqueIdentifier>{02e8ade7-8443-4833-8068-bcbf9e31b632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vector">
+      <UniqueIdentifier>{0d9459ef-b6ef-4340-ba94-db5c7655cc46}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
