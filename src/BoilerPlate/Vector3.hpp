@@ -1,5 +1,4 @@
 #pragma once
-
 #ifndef _VECTOR3_H_
 #define _VECTOR3_H_
 
@@ -7,12 +6,9 @@ namespace Engine
 {
 	namespace Math
 	{
-		struct Vector3
+		class Vector3
 		{
-			/*============================
-			*	STATIC
-			============================*/
-
+		public:
 
 			/*============================
 			*	CTOR
@@ -24,12 +20,26 @@ namespace Engine
 			/*============================
 			*	PUBLIC FUNCTIONS
 			============================*/
-
+			float Lenght() const;
+			float SquaredLenght() const;
+			Vector3 Normalize();
 
 			/*============================
 			*	OPERATORS
 			============================*/
-
+			Vector3& operator=(const Vector3& rhs);
+			Vector3& operator+=(const Vector3& rhs);
+			Vector3& operator-=(const Vector3& rhs);
+			Vector3& operator*=(const Vector3& rhs);
+			Vector3& operator/=(const Vector3& rhs);
+			Vector3 operator+(const Vector3& rhs) const;
+			Vector3 operator-(const Vector3& rhs) const;
+			Vector3 operator*(const Vector3& rhs) const;
+			Vector3 operator/(const Vector3& rhs) const;
+			bool	operator==(const Vector3& rhs) const;
+			bool	operator!=(const Vector3& rhs) const;
+			friend  Vector3 operator*(float, const Vector3&);
+			friend  Vector3 operator*(const Vector3&, float);
 
 			/*============================
 			*	MEMBERS

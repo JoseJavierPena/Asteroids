@@ -7,6 +7,9 @@ namespace Colors
 	static class ChangeColor
 	{
 	public:
+		/*======================
+		*	PUBLIC FUNCTIONS
+		======================*/
 		ChangeColor();
 		~ChangeColor();
 		int ChangeIt();

@@ -7,8 +7,10 @@ namespace Engine
 {
 	namespace Math
 	{
-		struct Vector2
+		class Vector2
 		{
+		public:
+
 			/*============================
 			*	STATIC 
 			============================*/

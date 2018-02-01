@@ -13,7 +13,9 @@ namespace Math
 	{
 	public:
 
-		/* FUNCTIONS */
+		/*====================
+		*	PUBLIC FUNCTIONS 
+		======================*/
 		MathUtilities();
 		~MathUtilities();
 
@@ -28,7 +30,9 @@ namespace Math
 		double AngularDistances(double, double);
 
 	private:
-		/* VARIABLES */
+		/*======================
+		*		MEMBERS
+		======================*/
 		int intToFloat;
 		float floatToInt;
 		double radians;
