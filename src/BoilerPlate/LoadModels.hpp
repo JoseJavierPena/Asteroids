@@ -5,10 +5,6 @@
 #include <vector>
 #include "Ship.hpp"
 #include "Utilities.hpp"
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
 #include "Vector2.hpp"
 
 namespace Utilities
@@ -27,11 +23,6 @@ namespace Utilities
 		*		PUBLIC FUNCTION
 		============================*/
 		std::vector<Asteroids::Entities::Ship*> Load(const int, const int);
-
-		/*============================
-		*			MEMBERS
-		============================*/
-		std::string const fileName = "models";
 	};
 }
 #endif // !_LOADMODELS_HPP_

@@ -18,13 +18,12 @@ namespace Engine
 			std::vector<std::string> vs;
 			HANDLE hFind;
 			hFind = FindFirstFile(w_path.c_str(), &fileFinder);
-
 			if (hFind != INVALID_HANDLE_VALUE)
 			{
 				do
 				{
-					std::wstring fName(fileFinder.cFileName);
-					vs.push_back(std::string(fName.begin(), fName.end()));
+					std::wstring fname(fileFinder.cFileName);
+					vs.push_back(std::string(fname.begin(), fname.end()));
 				} while (FindNextFile(hFind, &fileFinder));
 			}
 			FindClose(hFind);
@@ -34,7 +33,7 @@ namespace Engine
 
 		void Utilities::printUtil(std::vector<std::string> list)
 		{
-			for (int i = 2; i < static_cast<int> (list.size()); i++)
+			for (int i = 2; i < static_cast<int>(list.size()); i++)
 			{
 				std::cout << "File name: " << list.at(i) << std::endl;
 				std::cout << std::endl;
@@ -44,11 +43,10 @@ namespace Engine
 			}
 		}
 
-		std::string Utilities::buildPath(std::string pre, std::string post)
+		std::string Utilities::buildPath(std::string pre, std::string pos)
 		{
 			std::string path;
-			path = pre + "\\" + post;
-
+			path = pre + "\\" + pos;
 			return path;
 		}
 
@@ -62,7 +60,6 @@ namespace Engine
 			s_dir += "\\" + file;
 			std::wstring current(s_dir.begin(), s_dir.end());
 			current += L"/*.*";
-
 			return std::string(current.begin(), current.end());
 		}
 
@@ -70,8 +67,8 @@ namespace Engine
 		{
 			std::ifstream inFile(fileName, std::ifstream::in);
 			std::string temp("");
-			std::string firstNumGet;
-			std::string secondNumGet;
+			std::string firstnumget;
+			std::string secondnumget;
 			float n1 = 0.0;
 			float n2 = 0.0;
 
@@ -80,11 +77,10 @@ namespace Engine
 				while (!inFile.eof())
 				{
 					inFile >> temp;
-					firstNumGet = temp.substr(0, temp.find_last_of(","));
-					secondNumGet = temp.substr(temp.find_last_of(",") + 1, temp.length());
-					n1 = std::stof(firstNumGet);
-					n2 = std::stof(secondNumGet);
-
+					firstnumget = temp.substr(0, temp.find_last_of(","));
+					secondnumget = temp.substr(temp.find_last_of(",") + 1, temp.length());
+					n1 = std::stof(firstnumget);
+					n2 = std::stof(secondnumget);
 					std::cout << n1 << "," << n2 << std::endl;
 				}
 				return;

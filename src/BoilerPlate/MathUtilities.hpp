@@ -17,7 +17,7 @@ namespace Engine
 			/*====================
 			*	CONST
 			======================*/
-			const float PI = 3.1415926535897323846f;
+			//static const float PI;
 
 			/*====================
 			*	PUBLIC FUNCTIONS
@@ -31,8 +31,8 @@ namespace Engine
 			template<class T> T MinimumN(T arr[4]);
 			template<class T> T Clamp(T);
 			template<class T> T Interpolate(T);
-			float ConvertRadToDegrees(float);
-			float ConvertDegreesToRad(float);
+			static float ConvertRadToDegrees(float);
+			static float ConvertDegreesToRad(float);
 			inline int IsPowerOfTwo(int);
 			double AngularDistances(double, double);
 
@@ -41,8 +41,6 @@ namespace Engine
 			======================*/
 			float m_intToFloat;
 			int m_floatToInt;
-			// float m_radians;
-			// float m_degrees;
 		};
 	}
 }

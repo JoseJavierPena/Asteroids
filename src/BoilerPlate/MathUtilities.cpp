@@ -3,6 +3,8 @@
 namespace Engine
 {
 	namespace Math {
+		float M_PI = 3.1415926535897323846f;
+
 		MathUtilities::MathUtilities()
 		{}
 
@@ -25,12 +27,12 @@ namespace Engine
 
 		float MathUtilities::ConvertRadToDegrees(float angleInRadians)
 		{
-			return angleInRadians * (PI / 180);
+			return angleInRadians * (M_PI / 180);
 		}
 
 		float MathUtilities::ConvertDegreesToRad(float angleInDegrees)
 		{
-			return angleInDegrees * (180 / PI);
+			return angleInDegrees * (180 / M_PI);
 		}
 
 		inline int MathUtilities::IsPowerOfTwo(int n)
