@@ -8,7 +8,7 @@ namespace Colors
 	ChangeColor::~ChangeColor()
 	{}
 
-	int ChangeColor::ChangeIt()
+	void ChangeColor::ChangeIt()
 	{
 		Color color1(0, 255, 0);
 		Color color2(255, 0, 255);

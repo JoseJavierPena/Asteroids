@@ -10,7 +10,6 @@ namespace Colors
 		Color(int, int, int);
 		~Color();
 
-	private:
 		/* VARIABLES */
 		int red;
 		int green;
