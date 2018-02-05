@@ -19,12 +19,16 @@ namespace Engine
 		, m_timer(new TimeManager)
 		, m_mainWindow(nullptr)
 	{
+		m_game = new Asteroids::Game(width, height);
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 	}
 
 	App::~App()
 	{
+		// Eliminating pointer to game
+		delete m_game;
+
 		CleanupSDL();
 	}
 
@@ -80,6 +84,33 @@ namespace Engine
 	{		
 		switch (keyBoardEvent.keysym.scancode)
 		{
+		case SDL_SCANCODE_W:
+			m_game->m_player->MoveForward();
+			break;
+		case SDL_SCANCODE_A:
+			m_game->m_player->MoveLeft();
+			break;
+		case SDL_SCANCODE_S:
+			// Nothing
+			break;
+		case SDL_SCANCODE_D:
+			m_game->m_player->MoveRight();
+			break;
+		case SDL_SCANCODE_UP:
+			m_game->m_player->MoveForward();
+			break;
+		case SDL_SCANCODE_LEFT:
+			m_game->m_player->MoveLeft();
+			break;
+		case SDL_SCANCODE_RIGHT:
+			m_game->m_player->MoveRight();
+			break;
+		case SDL_SCANCODE_DOWN:
+			// Nothing
+			break;
+		case SDL_SCANCODE_P:
+			// Nothing
+			break;
 		default:			
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
 			break;
@@ -93,6 +124,17 @@ namespace Engine
 		case SDL_SCANCODE_ESCAPE:
 			OnExit();
 			break;
+		case SDL_SCANCODE_W:
+			break;
+		case SDL_SCANCODE_A:
+			break;		  
+		case SDL_SCANCODE_S:
+			break;		  
+		case SDL_SCANCODE_D:
+			break;		  
+		case SDL_SCANCODE_P:
+			//m_game->ChangePlayerModel();
+			break;
 		default:
 			//DO NOTHING
 			break;
@@ -104,7 +146,15 @@ namespace Engine
 		double startTime = m_timer->GetElapsedTimeInSeconds();
 
 		// Update code goes here
-		//
+		if (m_game)
+		{
+			// Updating game
+			m_game->Update(DESIRED_FRAME_RATE);
+
+			// Checking game run state
+			if (m_game->Finished() != Asteroids::Game::GameState::State::RUNNING)
+				OnExit();
+		}
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();
 		double nextTimeFrame = startTime + DESIRED_FRAME_TIME;
@@ -124,16 +174,19 @@ namespace Engine
 
 	void App::Render()
 	{
+		// Background color
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
+
+		//
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glBegin(GL_LINE_LOOP);
-		glVertex2f(50.0, 50.0);
-		glVertex2f(50.0, -50.0);
-		glVertex2f(-50.0, -50.0);
-		glVertex2f(-50.0, 50.0);
-		glEnd();
-
+		//Rendering current frame in game
+		if (m_game != NULL)
+		{
+			m_game->Render();
+		}
+		
+		// Sending to window
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
 

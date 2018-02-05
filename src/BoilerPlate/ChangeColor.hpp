@@ -12,6 +12,6 @@ namespace Colors
 		======================*/
 		ChangeColor();
 		~ChangeColor();
-		int ChangeIt();
+		void ChangeIt();
 	};
 }

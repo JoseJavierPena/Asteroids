@@ -5,41 +5,69 @@
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="stb_image.c" />
-    <ClCompile Include="MathUtilities.cpp">
-      <Filter>MathUtils</Filter>
-    </ClCompile>
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="Color.cpp">
-      <Filter>Colors</Filter>
-    </ClCompile>
-    <ClCompile Include="ChangeColor.cpp">
-      <Filter>Colors</Filter>
-    </ClCompile>
     <ClCompile Include="Vector2.cpp">
       <Filter>Engine\Source files</Filter>
     </ClCompile>
     <ClCompile Include="Vector3.cpp">
       <Filter>Engine\Source files</Filter>
     </ClCompile>
+    <ClCompile Include="MathUtilities.cpp">
+      <Filter>MathUtils\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>Game\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadModels.cpp">
+      <Filter>Models\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Engine\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities.cpp">
+      <Filter>Models\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeColor.cpp">
+      <Filter>Colors\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Colors\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.hpp" />
     <ClInclude Include="SDLEvent.hpp" />
     <ClInclude Include="TimeManager.hpp" />
-    <ClInclude Include="MathUtilities.hpp">
-      <Filter>MathUtils</Filter>
-    </ClInclude>
-    <ClInclude Include="Color.hpp">
-      <Filter>Colors</Filter>
-    </ClInclude>
-    <ClInclude Include="ChangeColor.hpp">
-      <Filter>Colors</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2.hpp">
       <Filter>Engine\Header files</Filter>
     </ClInclude>
     <ClInclude Include="Vector3.hpp">
       <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtilities.hpp">
+      <Filter>MathUtils\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.hpp">
+      <Filter>Game\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadModels.hpp">
+      <Filter>Models\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="App.hpp">
+      <Filter>Engine\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.hpp">
+      <Filter>Models\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeColor.hpp">
+      <Filter>Colors\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.hpp">
+      <Filter>Colors\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>Game\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +85,36 @@
     </Filter>
     <Filter Include="Colors">
       <UniqueIdentifier>{02e8ade7-8443-4833-8068-bcbf9e31b632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{dd3222ca-4f54-49a8-8fc1-1c9fc8006e6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Header Files">
+      <UniqueIdentifier>{f94ac271-31cd-4d6a-bcb6-b3cf03b79f5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MathUtils\Header Files">
+      <UniqueIdentifier>{9d0209a6-f217-4f63-b979-4e7dd78c41b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MathUtils\Source Files">
+      <UniqueIdentifier>{acb63f6c-b704-4ade-b256-4977adbd8ec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Source Files">
+      <UniqueIdentifier>{0950e1fb-abbe-444c-ac29-c047876c879e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{3b95b022-b26f-4ba9-a6d5-d9904efd4d7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Header Files">
+      <UniqueIdentifier>{6fb8de86-14a4-4ed4-9138-708f62e070fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Source Files">
+      <UniqueIdentifier>{174cf2c3-9376-43a4-b49a-471f858c9a5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colors\Header Files">
+      <UniqueIdentifier>{fcaac06c-4d3d-47ce-8b93-30706c40ac71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colors\Source Files">
+      <UniqueIdentifier>{04fe0d12-c55a-4705-808d-89a0a9f654f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

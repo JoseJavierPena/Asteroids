@@ -1,0 +1,94 @@
+#include "Utilities.hpp"
+
+namespace Engine
+{
+	namespace FileSystem
+	{
+		Utilities::Utilities()
+		{}
+
+		Utilities::~Utilities()
+		{}
+
+		std::vector<std::string> Utilities::ListFile(std::string file)
+		{
+			std::string path(getPath(file));
+			std::wstring w_path(path.begin(), path.end());
+			WIN32_FIND_DATA fileFinder;
+			std::vector<std::string> vs;
+			HANDLE hFind;
+			hFind = FindFirstFile(w_path.c_str(), &fileFinder);
+
+			if (hFind != INVALID_HANDLE_VALUE)
+			{
+				do
+				{
+					std::wstring fName(fileFinder.cFileName);
+					vs.push_back(std::string(fName.begin(), fName.end()));
+				} while (FindNextFile(hFind, &fileFinder));
+			}
+			FindClose(hFind);
+
+			return vs;
+		}
+
+		void Utilities::printUtil(std::vector<std::string> list)
+		{
+			for (int i = 2; i < static_cast<int> (list.size()); i++)
+			{
+				std::cout << "File name: " << list.at(i) << std::endl;
+				std::cout << std::endl;
+				std::cout << "FILE CONTENT :" << std::endl;
+				printFileContent(list.at(i));
+				std::cout << std::endl;
+			}
+		}
+
+		std::string Utilities::buildPath(std::string pre, std::string post)
+		{
+			std::string path;
+			path = pre + "\\" + post;
+
+			return path;
+		}
+
+		std::string Utilities::getPath(std::string file) const
+		{
+			wchar_t buff[MAX_PATH];
+			GetModuleFileName(NULL, buff, MAX_PATH);
+			std::wstring w_dir(buff);
+			std::string s_dir(w_dir.begin(), w_dir.end());
+			s_dir = s_dir.substr(0, s_dir.find_last_of("\\/"));
+			s_dir += "\\" + file;
+			std::wstring current(s_dir.begin(), s_dir.end());
+			current += L"/*.*";
+
+			return std::string(current.begin(), current.end());
+		}
+
+		void Utilities::printFileContent(std::string fileName)
+		{
+			std::ifstream inFile(fileName, std::ifstream::in);
+			std::string temp("");
+			std::string firstNumGet;
+			std::string secondNumGet;
+			float n1 = 0.0;
+			float n2 = 0.0;
+
+			if (inFile.good())
+			{
+				while (!inFile.eof())
+				{
+					inFile >> temp;
+					firstNumGet = temp.substr(0, temp.find_last_of(","));
+					secondNumGet = temp.substr(temp.find_last_of(",") + 1, temp.length());
+					n1 = std::stof(firstNumGet);
+					n2 = std::stof(secondNumGet);
+
+					std::cout << n1 << "," << n2 << std::endl;
+				}
+				return;
+			}
+		}
+	}
+}
