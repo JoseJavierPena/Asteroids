@@ -17,3 +17,10 @@ namespace Colors
 		int alpha;
 	};
 }
+
+class Color
+{
+public:
+	Color();
+	~Color();
+};

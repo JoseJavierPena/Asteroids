@@ -21,3 +21,12 @@ namespace Colors
 	Color::~Color()
 	{}
 }
+
+Color::Color()
+{
+}
+
+
+Color::~Color()
+{
+}

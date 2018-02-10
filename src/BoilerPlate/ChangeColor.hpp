@@ -15,3 +15,10 @@ namespace Colors
 		void ChangeIt();
 	};
 }
+
+class ChangeColor
+{
+public:
+	ChangeColor();
+	~ChangeColor();
+};

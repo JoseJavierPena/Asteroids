@@ -4,6 +4,8 @@ namespace Engine
 {
 	namespace Math
 	{
+		Vector2 Vector2::origin = Vector2();
+
 		Vector2::Vector2()
 			: m_x(0.0f)
 			, m_y(0.0f)
@@ -13,7 +15,7 @@ namespace Engine
 		Vector2::Vector2(float x, float y)
 			: m_x(x)
 			, m_y(y)
-			, m_lenght(0)
+			, m_lenght(0.0f)
 		{
 			Lenght();
 		}
@@ -21,20 +23,18 @@ namespace Engine
 		Vector2::Vector2(float uniform)
 			: m_x(uniform)
 			, m_y(uniform)
-			, m_lenght(0)
+			, m_lenght(0.0f)
 		{
 			Lenght();
 		}
 
 		float Vector2::Lenght() const
 		{
-
 			return std::sqrt(m_x * m_x + m_y * m_y);
 		}
 
 		float Vector2::SquaredLenght() const
 		{
-
 			return m_x * m_x + m_y * m_y;
 		}
 
