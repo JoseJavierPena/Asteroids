@@ -10,6 +10,7 @@ namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
+	const float movingUnit = 5.0f;
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -83,16 +84,16 @@ namespace Engine
 		switch (keyBoardEvent.keysym.scancode)
 		{
 		case SDL_SCANCODE_W:
-			m_player->MoveForward(Engine::Math::Vector2(0.0f, 10.0f));
+			m_player->MoveForward(Engine::Math::Vector2(0.0f, movingUnit));
 			break;
 		case SDL_SCANCODE_A:
-			m_player->MoveForward(Engine::Math::Vector2(-10.0f, 0.0f));
+			m_player->MoveForward(Engine::Math::Vector2(-movingUnit, 0.0f));
 			break;
 		case SDL_SCANCODE_D:
-			m_player->MoveForward(Engine::Math::Vector2(10.0f, 0.0f));
+			m_player->MoveForward(Engine::Math::Vector2(movingUnit, 0.0f));
 			break;
 		case SDL_SCANCODE_S:
-			m_player->MoveForward(Engine::Math::Vector2(0.0f, -10.0f));
+			m_player->MoveForward(Engine::Math::Vector2(0.0f, -movingUnit));
 			break;
 		default:			
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);

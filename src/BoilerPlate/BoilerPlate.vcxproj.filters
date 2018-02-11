@@ -26,6 +26,9 @@
     <ClCompile Include="Vector3.cpp">
       <Filter>Math\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Vector4.cpp">
+      <Filter>Math\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDLEvent.hpp" />
@@ -49,6 +52,9 @@
       <Filter>Math\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vector3.hpp">
+      <Filter>Math\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.hpp">
       <Filter>Math\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
