@@ -10,6 +10,7 @@ namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
+	const float movingUnit = 5.0f;
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -19,16 +20,14 @@ namespace Engine
 		, m_timer(new TimeManager)
 		, m_mainWindow(nullptr)
 	{
-		m_game = new Asteroids::Game(width, height);
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
+
+		m_player = new Asteroids::Entities::PlayerShip(m_width, m_height);
 	}
 
 	App::~App()
 	{
-		// Eliminating pointer to game
-		delete m_game;
-
 		CleanupSDL();
 	}
 
@@ -85,31 +84,16 @@ namespace Engine
 		switch (keyBoardEvent.keysym.scancode)
 		{
 		case SDL_SCANCODE_W:
-			m_game->m_player->MoveForward();
+			m_player->MoveForward(Engine::Math::Vector2(0.0f, movingUnit));
 			break;
 		case SDL_SCANCODE_A:
-			m_game->m_player->MoveLeft();
-			break;
-		case SDL_SCANCODE_S:
-			// Nothing
+			m_player->MoveForward(Engine::Math::Vector2(-movingUnit, 0.0f));
 			break;
 		case SDL_SCANCODE_D:
-			m_game->m_player->MoveRight();
+			m_player->MoveForward(Engine::Math::Vector2(movingUnit, 0.0f));
 			break;
-		case SDL_SCANCODE_UP:
-			m_game->m_player->MoveForward();
-			break;
-		case SDL_SCANCODE_LEFT:
-			m_game->m_player->MoveLeft();
-			break;
-		case SDL_SCANCODE_RIGHT:
-			m_game->m_player->MoveRight();
-			break;
-		case SDL_SCANCODE_DOWN:
-			// Nothing
-			break;
-		case SDL_SCANCODE_P:
-			// Nothing
+		case SDL_SCANCODE_S:
+			m_player->MoveForward(Engine::Math::Vector2(0.0f, -movingUnit));
 			break;
 		default:			
 			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
@@ -124,17 +108,6 @@ namespace Engine
 		case SDL_SCANCODE_ESCAPE:
 			OnExit();
 			break;
-		case SDL_SCANCODE_W:
-			break;
-		case SDL_SCANCODE_A:
-			break;		  
-		case SDL_SCANCODE_S:
-			break;		  
-		case SDL_SCANCODE_D:
-			break;		  
-		case SDL_SCANCODE_P:
-			//m_game->ChangePlayerModel();
-			break;
 		default:
 			//DO NOTHING
 			break;
@@ -146,15 +119,7 @@ namespace Engine
 		double startTime = m_timer->GetElapsedTimeInSeconds();
 
 		// Update code goes here
-		if (m_game)
-		{
-			// Updating game
-			m_game->Update(DESIRED_FRAME_RATE);
-
-			// Checking game run state
-			if (m_game->Finished() != Asteroids::Game::GameState::State::RUNNING)
-				OnExit();
-		}
+		//
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();
 		double nextTimeFrame = startTime + DESIRED_FRAME_TIME;
@@ -174,19 +139,12 @@ namespace Engine
 
 	void App::Render()
 	{
-		// Background color
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
-
-		//
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		//Rendering current frame in game
-		if (m_game != NULL)
-		{
-			m_game->Render();
-		}
-		
-		// Sending to window
+		// Drawing ship
+		m_player->Render();
+
 		SDL_GL_SwapWindow(m_mainWindow);
 	}
 

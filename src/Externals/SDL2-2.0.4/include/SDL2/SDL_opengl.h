@@ -194,11 +194,11 @@ typedef double		GLclampd;	/* double precision float in [0,1] */
 
 /* Data types */
 #define GL_BYTE					0x1400
-#define GL_UNSIGNED_BYTE		0x1401
+#define GL_UNSIGNED_BYTE			0x1401
 #define GL_SHORT				0x1402
-#define GL_UNSIGNED_SHORT		0x1403
+#define GL_UNSIGNED_SHORT			0x1403
 #define GL_INT					0x1404
-#define GL_UNSIGNED_INT			0x1405
+#define GL_UNSIGNED_INT				0x1405
 #define GL_FLOAT				0x1406
 #define GL_2_BYTES				0x1407
 #define GL_3_BYTES				0x1408
@@ -208,13 +208,13 @@ typedef double		GLclampd;	/* double precision float in [0,1] */
 /* Primitives */
 #define GL_POINTS				0x0000
 #define GL_LINES				0x0001
-#define GL_LINE_LOOP			0x0002
-#define GL_LINE_STRIP			0x0003
-#define GL_TRIANGLES			0x0004
-#define GL_TRIANGLE_STRIP		0x0005
-#define GL_TRIANGLE_FAN			0x0006
+#define GL_LINE_LOOP				0x0002
+#define GL_LINE_STRIP				0x0003
+#define GL_TRIANGLES				0x0004
+#define GL_TRIANGLE_STRIP			0x0005
+#define GL_TRIANGLE_FAN				0x0006
 #define GL_QUADS				0x0007
-#define GL_QUAD_STRIP			0x0008
+#define GL_QUAD_STRIP				0x0008
 #define GL_POLYGON				0x0009
 
 /* Vertex Arrays */

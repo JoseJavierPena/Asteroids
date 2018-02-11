@@ -16,3 +16,12 @@ namespace Colors
 		Color color4(1,100, 255);
 	}
 }
+
+ChangeColor::ChangeColor()
+{
+}
+
+
+ChangeColor::~ChangeColor()
+{
+}

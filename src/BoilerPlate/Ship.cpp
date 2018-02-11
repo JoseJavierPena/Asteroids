@@ -82,9 +82,9 @@ namespace Asteroids
 		// RENDER
 		void Ship::Render()
 		{
-			m_angleRad = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
+			//m_angleRad = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
 
-			Render(GL_LINE_LOOP, m_position, m_angle);
+			//Render(GL_LINE_LOOP, m_position, m_angle);
 		}
 
 		// RENDER
