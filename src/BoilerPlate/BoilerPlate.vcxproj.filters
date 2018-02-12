@@ -5,9 +5,6 @@
     <ClCompile Include="SDLEvent.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="stb_image.c" />
-    <ClCompile Include="ChangeColor.cpp">
-      <Filter>Colors\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Color.cpp">
       <Filter>Colors\Source Files</Filter>
     </ClCompile>
@@ -33,9 +30,6 @@
   <ItemGroup>
     <ClInclude Include="SDLEvent.hpp" />
     <ClInclude Include="TimeManager.hpp" />
-    <ClInclude Include="ChangeColor.hpp">
-      <Filter>Colors\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Color.hpp">
       <Filter>Colors\Header Files</Filter>
     </ClInclude>

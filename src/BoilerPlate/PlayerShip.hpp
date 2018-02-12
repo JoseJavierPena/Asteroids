@@ -26,16 +26,18 @@ namespace Asteroids
 			void Update();
 			void RotateLeft();
 			void RotateRight();
+			float Warp(float, float, float);
 
 		private:
 			/*============================
 			*		  MEMBERS
 			============================*/
 			Engine::Math::Vector2* m_position;
-			float m_width;
-			float m_height;
+			float maxWidth;
+			float maxHeight;
+			float minWidth;
+			float minHeight;
 		};
 	}
 }
-
 #endif // !_PLAYER_SHIP_HPP_

@@ -10,6 +10,7 @@
 #include "SDLEvent.hpp"
 #include "TimeManager.hpp"
 #include "PlayerShip.hpp"
+#include "Color.hpp"
 
 namespace Engine
 {
@@ -69,6 +70,7 @@ namespace Engine
 		Engine::TimeManager*				m_timer;
 
 		Asteroids::Entities::PlayerShip* m_player;
+		Colors::Color m_backgroundColor;
 	};
 }
 #endif /* GAME_HPP */

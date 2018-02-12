@@ -10,7 +10,7 @@ namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
-	const float movingUnit = 5.0f;
+	float movingUnit = 10.0f;
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -24,10 +24,15 @@ namespace Engine
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 
 		m_player = new Asteroids::Entities::PlayerShip(m_width, m_height);
+		//m_backgroundColor = Colors::Color(0.0f,0.0f,0.0f);
 	}
 
 	App::~App()
 	{
+		if (m_player)
+		{
+			delete m_player;
+		}
 		CleanupSDL();
 	}
 
@@ -84,15 +89,19 @@ namespace Engine
 		switch (keyBoardEvent.keysym.scancode)
 		{
 		case SDL_SCANCODE_W:
+			SDL_Log("Moving forward");
 			m_player->MoveForward(Engine::Math::Vector2(0.0f, movingUnit));
 			break;
 		case SDL_SCANCODE_A:
+			SDL_Log("Moving left");
 			m_player->MoveForward(Engine::Math::Vector2(-movingUnit, 0.0f));
 			break;
 		case SDL_SCANCODE_D:
+			SDL_Log("Moving right");
 			m_player->MoveForward(Engine::Math::Vector2(movingUnit, 0.0f));
 			break;
 		case SDL_SCANCODE_S:
+			SDL_Log("Moving down");
 			m_player->MoveForward(Engine::Math::Vector2(0.0f, -movingUnit));
 			break;
 		default:			
@@ -139,6 +148,7 @@ namespace Engine
 
 	void App::Render()
 	{
+		//glClearColor(m_backgroundColor.m_color.m_x, m_backgroundColor.m_color.m_y, m_backgroundColor.m_color.m_z, m_backgroundColor.m_alpha);
 		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
