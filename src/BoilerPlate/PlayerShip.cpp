@@ -14,20 +14,32 @@ namespace Asteroids
 		PlayerShip::PlayerShip(int width, int height)
 		{
 			m_position = new Engine::Math::Vector2(Engine::Math::Vector2::origin);
-			m_width = width / 1.0f;
-			m_height = height / 1.0f;
+
+			maxWidth = width / 2.0f;
+			minWidth = -width / 2.0f;
+
+			maxHeight = height / 2.0f;
+			minHeight = -height / 2.0f;
+		}
+
+		float PlayerShip::Warp(float x, float max, float min)
+		{
+			if (x < min) return max - (min - x);
+			if (x > max) return min + (x - max);
+
+			return x;
 		}
 
 		PlayerShip::~PlayerShip()
 		{}
 
-		void PlayerShip::MoveForward(const Engine::Math::Vector2& a)
+		void PlayerShip::MoveForward(Engine::Math::Vector2& a)
 		{
 			float x = m_position->m_x + a.m_x;
 			float y = m_position->m_y + a.m_y;
 
-			m_position->m_x += x;
-			m_position->m_y += y;
+			m_position->m_x += Warp(x, minWidth, maxWidth);
+			m_position->m_y += Warp(y, minHeight, maxHeight);
 		}
 
 		void PlayerShip::Render()

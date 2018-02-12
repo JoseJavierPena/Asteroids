@@ -4,29 +4,20 @@ namespace Colors
 {
 	Color::Color()
 	{
-		red = 0;
-		green = 0;
-		blue = 0;
-		alpha = 255;
+		m_color.m_x = 0;
+		m_color.m_y = 0;
+		m_color.m_z = 0;
+		m_alpha = 255;
 	}
 
 	Color::Color(int re, int gre, int blu)
 	{
-		red = re;
-		green = gre;
-		blue = blu;
-		alpha = 255;
+		m_color.m_x = re;
+		m_color.m_y = gre;
+		m_color.m_z = blu;
+		m_alpha = 255;
 	}
 
 	Color::~Color()
 	{}
-}
-
-Color::Color()
-{
-}
-
-
-Color::~Color()
-{
 }

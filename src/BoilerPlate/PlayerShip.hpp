@@ -21,21 +21,23 @@ namespace Asteroids
 			/*============================
 			*	  PUBLIC FUNCTIONS
 			============================*/
-			void MoveForward(const Engine::Math::Vector2&);
+			void MoveForward(Engine::Math::Vector2&);
 			void Render();
 			void Update();
 			void RotateLeft();
 			void RotateRight();
+			float Warp(float, float, float);
 
 		private:
 			/*============================
 			*		  MEMBERS
 			============================*/
 			Engine::Math::Vector2* m_position;
-			float m_width;
-			float m_height;
+			float maxWidth;
+			float maxHeight;
+			float minWidth;
+			float minHeight;
 		};
 	}
 }
-
 #endif // !_PLAYER_SHIP_HPP_

@@ -1,26 +1,26 @@
 #pragma once
+#ifndef _COLOR_HPP_
+#define _COLOR_HPP_
+
+#include "Vector3.hpp"
 
 namespace Colors
 {
 	static class Color
 	{
 	public:
-		/* CTOR */
+		/*============================
+		*			CTOR
+		============================*/
 		Color();
 		Color(int, int, int);
 		~Color();
 
-		/* VARIABLES */
-		int red;
-		int green;
-		int blue;
-		int alpha;
+		/*============================
+		*			MEMBERS
+		============================*/
+		int m_alpha;
+		Engine::Math::Vector3 m_color;
 	};
 }
-
-class Color
-{
-public:
-	Color();
-	~Color();
-};
+#endif // !_COLOR_HPP_
