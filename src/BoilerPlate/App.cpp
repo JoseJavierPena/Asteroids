@@ -29,6 +29,10 @@ namespace Engine
 
 	App::~App()
 	{
+		if (m_player)
+		{
+			delete m_player;
+		}
 		CleanupSDL();
 	}
 

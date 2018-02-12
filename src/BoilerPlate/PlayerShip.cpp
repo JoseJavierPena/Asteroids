@@ -1,5 +1,4 @@
 #include "PlayerShip.hpp"
-#include "Vector2.hpp"
 
 #include <GL\glew.h>
 #include <SDL2\SDL_opengl.h>
@@ -22,7 +21,7 @@ namespace Asteroids
 			minHeight = -height / 2.0f;
 		}
 
-		float PlayerShip::Warp(float x, float max, float min)
+		float PlayerShip::Warp(float x, float min, float max)
 		{
 			if (x < min) return max - (min - x);
 			if (x > max) return min + (x - max);
@@ -33,7 +32,7 @@ namespace Asteroids
 		PlayerShip::~PlayerShip()
 		{}
 
-		void PlayerShip::MoveForward(Engine::Math::Vector2& a)
+		void PlayerShip::MoveForward(const Engine::Math::Vector2& a)
 		{
 			float x = m_position->m_x + a.m_x;
 			float y = m_position->m_y + a.m_y;
