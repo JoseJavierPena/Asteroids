@@ -14,9 +14,7 @@ namespace Asteroids
 			/*============================
 			*			CTOR
 			============================*/
-			PlayerShip();
 			PlayerShip(int, int);
-			~PlayerShip();
 
 			/*============================
 			*	  PUBLIC FUNCTIONS
@@ -37,6 +35,7 @@ namespace Asteroids
 			float maxHeight;
 			float minWidth;
 			float minHeight;
+			float m_mass;
 		};
 	}
 }

@@ -13,18 +13,9 @@ namespace Engine
 		class MathUtilities
 		{
 		public:
-
-			/*====================
-			*	CONST
-			======================*/
-			//static const float PI;
-
 			/*====================
 			*	PUBLIC FUNCTIONS
 			======================*/
-			MathUtilities();
-			~MathUtilities();
-
 			inline int GetNearestInt(int);
 			inline float RoundFloatToInt(float);
 			template<class T> T MaximumN(T arr[4]);

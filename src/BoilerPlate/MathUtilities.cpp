@@ -3,13 +3,7 @@
 namespace Engine
 {
 	namespace Math {
-		float M_PI = 3.1415926535897323846f;
-
-		MathUtilities::MathUtilities()
-		{}
-
-		MathUtilities::~MathUtilities()
-		{}
+		float M_PI = 3.14159f;
 
 		inline int MathUtilities::GetNearestInt(int a)
 		{

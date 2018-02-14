@@ -7,9 +7,6 @@ namespace Asteroids
 {
 	namespace Entities
 	{
-		PlayerShip::PlayerShip()
-		{}
-
 		PlayerShip::PlayerShip(int width, int height)
 		{
 			m_position = new Engine::Math::Vector2(Engine::Math::Vector2::origin);
@@ -28,9 +25,6 @@ namespace Asteroids
 
 			return x;
 		}
-
-		PlayerShip::~PlayerShip()
-		{}
 
 		void PlayerShip::MoveForward(const Engine::Math::Vector2& a)
 		{

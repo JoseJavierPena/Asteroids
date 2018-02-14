@@ -22,6 +22,7 @@ namespace Engine
 			*			CTOR
 			============================*/
 			Vector4();
+			Vector4(float);
 			Vector4(float, float, float, float);
 			Vector4(const Vector2&);
 			Vector4(const Vector3&);

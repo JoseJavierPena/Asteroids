@@ -23,8 +23,8 @@ namespace Engine
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 
-		m_player = new Asteroids::Entities::PlayerShip(m_width, m_height);
-		//m_backgroundColor = Colors::Color(0.0f,0.0f,0.0f);
+		m_player = new Asteroids::Entities::PlayerShip(m_width, m_height); //
+		m_backgroundColor = Colors::Color(0.0f,0.0f,0.0f); // Change color = black
 	}
 
 	App::~App()
@@ -105,7 +105,7 @@ namespace Engine
 			m_player->MoveForward(Engine::Math::Vector2(0.0f, -movingUnit));
 			break;
 		default:			
-			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
+			SDL_Log("Physical %s key acting as %s key", SDL_GetScancodeName(keyBoardEvent.keysym.scancode), SDL_GetKeyName(keyBoardEvent.keysym.sym));
 			break;
 		}
 	}
@@ -148,8 +148,7 @@ namespace Engine
 
 	void App::Render()
 	{
-		//glClearColor(m_backgroundColor.m_color.m_x, m_backgroundColor.m_color.m_y, m_backgroundColor.m_color.m_z, m_backgroundColor.m_alpha);
-		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
+		glClearColor(m_backgroundColor.m_color.m_x, m_backgroundColor.m_color.m_y, m_backgroundColor.m_color.m_z, m_backgroundColor.m_alpha);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// Drawing ship
