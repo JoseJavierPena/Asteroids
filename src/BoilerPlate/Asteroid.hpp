@@ -32,6 +32,7 @@ namespace Asteroids
 			============================*/
 			void Render();
 			void Update();
+			void GetSize();
 
 		};
 

@@ -39,10 +39,10 @@ namespace Asteroids
 		{
 			glLoadIdentity();
 
-			// Translate
+			// Translates a vector
 			glTranslatef(m_position->m_x, m_position->m_y, 0.0f);
 
-			// Drawing the ship
+			// Draws a square
 			glBegin(GL_LINE_LOOP);
 			glVertex2f(0.0f, 20.0f);
 			glVertex2f(12.0f, -10.0f);

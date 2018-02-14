@@ -8,8 +8,7 @@ namespace Asteroids
 		{}
 
 		Asteroid::Asteroid(int, int)
-		{
-		}
+		{}
 
 		Asteroid::~Asteroid()
 		{}
@@ -18,6 +17,9 @@ namespace Asteroids
 		{}
 
 		void Asteroid::Update()
+		{}
+
+		void Asteroid::GetSize()
 		{}
 	}
 }
