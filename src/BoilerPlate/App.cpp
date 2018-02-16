@@ -23,8 +23,10 @@ namespace Engine
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 
-		m_player = new Asteroids::Entities::PlayerShip(m_width, m_height); //
+		// 
+		m_player = new Asteroids::Entities::PlayerShip(m_width, m_height); 
 		m_backgroundColor = Colors::Color(0.0f,0.0f,0.0f); // Change color = black
+		m_asteroid = new Asteroids::Entities::Asteroid(m_width, m_height);
 	}
 
 	App::~App()
@@ -153,6 +155,9 @@ namespace Engine
 
 		// Drawing ship
 		m_player->Render();
+
+		// Drawing an asteroid
+		m_asteroid->Render();
 
 		SDL_GL_SwapWindow(m_mainWindow);
 	}

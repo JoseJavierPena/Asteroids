@@ -11,6 +11,7 @@
 #include "TimeManager.hpp"
 #include "PlayerShip.hpp"
 #include "Color.hpp"
+#include "Asteroid.hpp"
 
 namespace Engine
 {
@@ -69,8 +70,10 @@ namespace Engine
 		GameState::State					m_state;
 		Engine::TimeManager*				m_timer;
 
+		//
 		Asteroids::Entities::PlayerShip* m_player;
 		Colors::Color m_backgroundColor;
+		Asteroids::Entities::Asteroid* m_asteroid;
 	};
 }
 #endif /* GAME_HPP */

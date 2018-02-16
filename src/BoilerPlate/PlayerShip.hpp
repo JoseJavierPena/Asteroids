@@ -8,7 +8,7 @@ namespace Asteroids
 {
 	namespace Entities
 	{
-		class PlayerShip
+		class PlayerShip 
 		{
 		public:
 			/*============================
@@ -36,6 +36,7 @@ namespace Asteroids
 			float minWidth;
 			float minHeight;
 			float m_mass;
+			bool thruster;
 		};
 	}
 }

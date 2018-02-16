@@ -20,18 +20,21 @@ namespace Asteroids
 
 		float PlayerShip::Warp(float x, float min, float max)
 		{
-			/*if (x < min) return max - (min - x);
-			if (x > max) return min + (x - max);*/
-
+			// TODO: Redo warp or wraparound function and move to new Class Entity
+			if (x < min) return max - (min - x);
+			if (x > max) return min + (x - max);
+			/*
 			if (x < min) return -x;
-			if (x > max) return -x;
+			if (x > max) return -x;*/
 			return x;
 		}
 
 		void PlayerShip::MoveForward(/*Engine::Math::Vector2 a*/ float x, float y)
 		{
+			// TODO: Redo position and move to new Class Entity
 			/*float x = m_position->m_x + a.m_x;
 			float y = m_position->m_y + a.m_y;*/
+			thruster = true;
 
 			m_position->m_x += Warp(x, minWidth, maxWidth);
 			m_position->m_y += Warp(y, minHeight, maxHeight);
@@ -39,12 +42,13 @@ namespace Asteroids
 
 		void PlayerShip::Render()
 		{
+			// TODO
 			glLoadIdentity();
 
 			// Translates a vector
 			glTranslatef(m_position->m_x, m_position->m_y, 0.0f);
 
-			// Draws a square
+			// Draws the ship
 			glBegin(GL_LINE_LOOP);
 			glVertex2f(0.0f, 20.0f);
 			glVertex2f(12.0f, -10.0f);
@@ -52,9 +56,21 @@ namespace Asteroids
 			glVertex2f(-6.0f, -4.0f);
 			glVertex2f(-12.0f, -10.0f);
 			glEnd();
+
+			// TODO: Redo 
+			/*
+			if (thruster == true)
+			{
+				glBegin(GL_LINE_LOOP);
+				glVertex2f(0.0f, 20.0f);
+				glVertex2f(12.0f, -10.0f);
+				glVertex2f(6.0f, -4.0f);
+			}
+			*/
 			
 		}
 
+		// TODO
 		void PlayerShip::Update()
 		{}
 

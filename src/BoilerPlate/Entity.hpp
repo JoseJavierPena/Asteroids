@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _ASTEROID_HPP_
-#define _ASTEROID_HPP_
+#ifndef _ENTITY_HPP_
+#define _ENTITY_HPP_
 
 #include "Vector2.hpp"
 
@@ -8,41 +8,35 @@ namespace Asteroids
 {
 	namespace Entities
 	{
-		class Asteroid
+		class Entity
 		{
 		public:
-
-			struct AsteroidSize
-			{
-				enum SIZE
-				{
-					SMALL = 1,
-					MEDIUM = 5,
-					BIG = 10,
-				};
-			};
-
 			/*============================
 			*			CTOR
 			============================*/
-			Asteroid(int, int);
+			Entity();
+			Entity(int, int);
+			~Entity();
 
 			/*============================
-			*		PUBLIC FUNCTION
+			*		PUBLIC FUNCTIONS
 			============================*/
-			void Render();
+			void Wraparound(float, float, float);
 			void Update();
-			void GetSize();
+			void Render();
 
+		private:
 			/*============================
-			*		  MEMBERS
+			*			MEMBERS
 			============================*/
 			Engine::Math::Vector2* m_position;
-			float m_width;
-			float m_height;
-
+			float m_maxWidth;
+			float m_minWidth;
+			float m_maxHeight;
+			float m_minHeight;
+			float m_mass;
+			float m_radius;
 		};
-
 	}
 }
-#endif // !_ASTEROID_HPP_
+#endif // !_ENTITY_HPP_
