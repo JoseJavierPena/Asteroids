@@ -39,9 +39,6 @@
     <ClInclude Include="MathUtilities.hpp">
       <Filter>Math\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerShip.hpp">
-      <Filter>Game\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="App.hpp">
       <Filter>Engine\Header files</Filter>
     </ClInclude>
@@ -55,6 +52,9 @@
       <Filter>Math\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Asteroid.hpp">
+      <Filter>Game\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerShip.hpp">
       <Filter>Game\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

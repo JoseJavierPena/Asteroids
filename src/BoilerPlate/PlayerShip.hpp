@@ -19,7 +19,7 @@ namespace Asteroids
 			/*============================
 			*	  PUBLIC FUNCTIONS
 			============================*/
-			void MoveForward(const Engine::Math::Vector2&);
+			void MoveForward(/*Engine::Math::Vector2 a*/ float x, float y);
 			void Render();
 			void Update();
 			void RotateLeft();

@@ -10,7 +10,7 @@ namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
-	float movingUnit = 10.0f;
+	float movingUnit = 2.0f;
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -90,19 +90,19 @@ namespace Engine
 		{
 		case SDL_SCANCODE_W:
 			SDL_Log("Moving forward");
-			m_player->MoveForward(Engine::Math::Vector2(0.0f, movingUnit));
+			m_player->MoveForward(/*Engine::Math::Vector2(0.0f, movingUnit)*/ 0.f, movingUnit);
 			break;
 		case SDL_SCANCODE_A:
 			SDL_Log("Moving left");
-			m_player->MoveForward(Engine::Math::Vector2(-movingUnit, 0.0f));
+			m_player->MoveForward(/*Engine::Math::Vector2(-movingUnit, 0.0f)*/-movingUnit, 0.f);
 			break;
 		case SDL_SCANCODE_D:
 			SDL_Log("Moving right");
-			m_player->MoveForward(Engine::Math::Vector2(movingUnit, 0.0f));
+			m_player->MoveForward(/*Engine::Math::Vector2(movingUnit, 0.0f)*/ movingUnit, 0.f);
 			break;
 		case SDL_SCANCODE_S:
 			SDL_Log("Moving down");
-			m_player->MoveForward(Engine::Math::Vector2(0.0f, -movingUnit));
+			m_player->MoveForward(/*Engine::Math::Vector2(0.0f, -movingUnit)*/0.f, -movingUnit);
 			break;
 		default:			
 			SDL_Log("Physical %s key acting as %s key", SDL_GetScancodeName(keyBoardEvent.keysym.scancode), SDL_GetKeyName(keyBoardEvent.keysym.sym));
