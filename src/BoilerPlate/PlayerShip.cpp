@@ -8,6 +8,9 @@ namespace Asteroids
 	namespace Entities
 	{
 		PlayerShip::PlayerShip(int width, int height)
+			: m_angle(0.0f)
+			, m_thruster(false)
+			, m_moving(false)
 		{
 			m_position = new Engine::Math::Vector2(Engine::Math::Vector2::origin);
 
@@ -18,35 +21,27 @@ namespace Asteroids
 			minHeight = -height / 2.0f;
 		}
 
-		float PlayerShip::Warp(float x, float min, float max)
-		{
-			// TODO: Redo warp or wraparound function and move to new Class Entity
-			if (x < min) return max - (min - x);
-			if (x > max) return min + (x - max);
-			/*
-			if (x < min) return -x;
-			if (x > max) return -x;*/
-			return x;
-		}
-
 		void PlayerShip::MoveForward(/*Engine::Math::Vector2 a*/ float x, float y)
 		{
 			// TODO: Redo position and move to new Class Entity
 			/*float x = m_position->m_x + a.m_x;
 			float y = m_position->m_y + a.m_y;*/
-			thruster = true;
+			m_thruster = true; 
+			m_moving = true;
 
-			m_position->m_x += Warp(x, minWidth, maxWidth);
-			m_position->m_y += Warp(y, minHeight, maxHeight);
+			m_position->m_x += Asteroids::Entities::Entity::Wraparound(x, minWidth, maxWidth);
+			m_position->m_y += Asteroids::Entities::Entity::Wraparound(y, minHeight, maxHeight);
 		}
 
 		void PlayerShip::Render()
 		{
-			// TODO
 			glLoadIdentity();
 
 			// Translates a vector
 			glTranslatef(m_position->m_x, m_position->m_y, 0.0f);
+
+			// Rotate the ship
+			glRotatef(m_angle, 0.0f, 0.0f, 1.0f);
 
 			// Draws the ship
 			glBegin(GL_LINE_LOOP);
@@ -57,27 +52,35 @@ namespace Asteroids
 			glVertex2f(-12.0f, -10.0f);
 			glEnd();
 
-			// TODO: Redo 
-			/*
-			if (thruster == true)
+			if (m_thruster)
 			{
 				glBegin(GL_LINE_LOOP);
-				glVertex2f(0.0f, 20.0f);
-				glVertex2f(12.0f, -10.0f);
 				glVertex2f(6.0f, -4.0f);
+				glVertex2f(0.0f, -16.0f);
+				glVertex2f(-6.0f, -4.0f);
+				glEnd();
 			}
-			*/
-			
 		}
 
 		// TODO
 		void PlayerShip::Update()
-		{}
+		{
+			if (!m_moving) m_thruster = false;
+
+		}
 
 		void PlayerShip::RotateLeft()
-		{}
+		{
+			float new_angle = 5.0f;
+			m_angle += new_angle;
+			Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
+		}
 
 		void PlayerShip::RotateRight()
-		{}
+		{
+			float new_angle = -5.0f;
+			m_angle += new_angle;
+			Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
+		}
 	}
 }

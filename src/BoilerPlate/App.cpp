@@ -10,7 +10,7 @@ namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
-	float movingUnit = 2.0f;
+	float movingUnit = 10.0f;
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -35,6 +35,12 @@ namespace Engine
 		{
 			delete m_player;
 		}
+
+		if (m_asteroid)
+		{
+			delete m_asteroid;
+		}
+
 		CleanupSDL();
 	}
 
@@ -96,15 +102,16 @@ namespace Engine
 			break;
 		case SDL_SCANCODE_A:
 			SDL_Log("Moving left");
-			m_player->MoveForward(/*Engine::Math::Vector2(-movingUnit, 0.0f)*/-movingUnit, 0.f);
+			m_player->RotateLeft();
 			break;
 		case SDL_SCANCODE_D:
 			SDL_Log("Moving right");
-			m_player->MoveForward(/*Engine::Math::Vector2(movingUnit, 0.0f)*/ movingUnit, 0.f);
+			m_player->RotateRight();
 			break;
 		case SDL_SCANCODE_S:
-			SDL_Log("Moving down");
-			m_player->MoveForward(/*Engine::Math::Vector2(0.0f, -movingUnit)*/0.f, -movingUnit);
+			//SDL_Log("Moving down");
+			//m_player->MoveForward(/*Engine::Math::Vector2(0.0f, -movingUnit)*/0.f, -movingUnit);
+			// TODO: Need brakes for the speed of the ship
 			break;
 		default:			
 			SDL_Log("Physical %s key acting as %s key", SDL_GetScancodeName(keyBoardEvent.keysym.scancode), SDL_GetKeyName(keyBoardEvent.keysym.sym));

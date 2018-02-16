@@ -21,9 +21,9 @@ namespace Asteroids
 			/*============================
 			*		PUBLIC FUNCTIONS
 			============================*/
-			void Wraparound(float, float, float);
 			void Update();
 			void Render();
+			float Wraparound(float, float, float);
 
 		private:
 			/*============================

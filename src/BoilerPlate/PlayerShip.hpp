@@ -3,12 +3,14 @@
 #define _PLAYER_SHIP_HPP_
 
 #include "Vector2.hpp"
+#include "Entity.hpp"
+#include "MathUtilities.hpp"
 
 namespace Asteroids
 {
 	namespace Entities
 	{
-		class PlayerShip 
+		class PlayerShip : Entity
 		{
 		public:
 			/*============================
@@ -24,7 +26,6 @@ namespace Asteroids
 			void Update();
 			void RotateLeft();
 			void RotateRight();
-			float Warp(float, float, float);
 
 		private:
 			/*============================
@@ -36,7 +37,9 @@ namespace Asteroids
 			float minWidth;
 			float minHeight;
 			float m_mass;
-			bool thruster;
+			float m_angle;
+			bool m_thruster;
+			bool m_moving;
 		};
 	}
 }
