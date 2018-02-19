@@ -14,7 +14,6 @@ namespace Colors
 		============================*/
 		Color();
 		Color(int, int, int);
-		~Color();
 
 		/*============================
 		*			MEMBERS

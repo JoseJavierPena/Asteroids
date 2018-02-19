@@ -3,40 +3,45 @@
 #define _PLAYER_SHIP_HPP_
 
 #include "Vector2.hpp"
+#include "Entity.hpp"
+#include "MathUtilities.hpp"
 
 namespace Asteroids
 {
 	namespace Entities
 	{
-		class PlayerShip
+		class PlayerShip : Entity
 		{
 		public:
 			/*============================
 			*			CTOR
 			============================*/
-			PlayerShip();
 			PlayerShip(int, int);
-			~PlayerShip();
 
 			/*============================
 			*	  PUBLIC FUNCTIONS
 			============================*/
-			void MoveForward(const Engine::Math::Vector2&);
+			void MoveForward();
 			void Render();
-			void Update();
+			void Update(float);
 			void RotateLeft();
 			void RotateRight();
-			float Warp(float, float, float);
+			void NotMoving() { m_moving = false; };
 
 		private:
 			/*============================
+			*	  PRIVATE FUNCTIONS
+			============================*/
+			void ApplyImpulse() { m_velocity += Impulse(); };
+
+			/*============================
 			*		  MEMBERS
 			============================*/
-			Engine::Math::Vector2* m_position;
-			float maxWidth;
-			float maxHeight;
-			float minWidth;
-			float minHeight;
+			Engine::Math::Vector2 m_velocity;;
+			float m_mass;
+			float m_angle;
+			bool m_thruster;
+			bool m_moving;
 		};
 	}
 }

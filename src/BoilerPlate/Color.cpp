@@ -17,7 +17,4 @@ namespace Colors
 		m_color.m_z = blu;
 		m_alpha = 255;
 	}
-
-	Color::~Color()
-	{}
 }

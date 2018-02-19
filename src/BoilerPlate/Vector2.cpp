@@ -1,4 +1,5 @@
 #include "Vector2.hpp"
+#include <cmath>
 
 namespace Engine
 {
@@ -45,12 +46,12 @@ namespace Engine
 			float inverseScale = 1.0f / m_lenght;
 			m_x *= inverseScale;
 			m_y *= inverseScale;
+
 			return m_lenght;
 		}
 
 		Vector2 & Vector2::operator=(const Vector2 & rhs)
 		{
-			// TODO: insert return statement here
 			if (this == &rhs)
 			{
 				return *this;
@@ -98,42 +99,25 @@ namespace Engine
 
 		Vector2 Vector2::operator+(const Vector2 & rhs) const
 		{
-			Vector2 sum;
-
-			sum.m_x = m_x + rhs.m_x;
-			sum.m_y = m_y + rhs.m_y;
-
-			return sum;
+			return Vector2(m_x + rhs.m_x, m_y + rhs.m_y);;
 		}
 
 		Vector2 Vector2::operator-(const Vector2 & rhs) const
-		{
-			Vector2 sub;
-
-			sub.m_x = m_x - rhs.m_x;
-			sub.m_y = m_y - rhs.m_y;
-
-			return sub;
-		}
+		{	 	 
+			return Vector2(m_x - rhs.m_x, m_y - rhs.m_y);
+		}	
 
 		Vector2 Vector2::operator*(const Vector2 & rhs) const
 		{
-			Vector2 scaled;
-
-			scaled.m_x = m_x * rhs.m_x;
-			scaled.m_y = m_y * rhs.m_y;
-
-			return scaled;
-		}
+			return Vector2(m_x * rhs.m_x, m_y * rhs.m_y);
+		}				   
 
 		Vector2 Vector2::operator/(const Vector2 & rhs) const
 		{
-			Vector2 inverseScaled;
+			if (rhs.m_x == 0) throw "Division by zero is not defined";
+			if (rhs.m_y == 0) throw "Division by zero is not defined";
 
-			inverseScaled.m_x = m_x / rhs.m_x;
-			inverseScaled.m_y = m_y / rhs.m_y;
-
-			return inverseScaled;
+			return Vector2(m_x / rhs.m_x, m_y / rhs.m_y);
 		}
 
 		bool Vector2::operator==(const Vector2 & rhs) const
@@ -148,22 +132,13 @@ namespace Engine
 
 		Vector2 operator*(float scaledUnit, const Vector2 &rhs)
 		{
-			Vector2 scaled;
-
-			scaled.m_x = scaledUnit * rhs.m_x;
-			scaled.m_y = scaledUnit * rhs.m_y;
-
-			return scaled;
+			return Vector2(scaledUnit * rhs.m_x,
+			scaledUnit * rhs.m_y);
 		}
 
 		Vector2 operator*(const Vector2 &lhs, float scaleUnit)
 		{
-			Vector2 scaled;
-
-			scaled.m_x = scaleUnit * lhs.m_x;
-			scaled.m_y = scaleUnit * lhs.m_y;
-			
-			return scaled;
+			return Vector2(scaleUnit * lhs.m_x, scaleUnit * lhs.m_y);
 		}
 	}
 }

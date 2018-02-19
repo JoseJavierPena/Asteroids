@@ -14,6 +14,15 @@ namespace Engine
 			, m_lenght(0)
 		{}
 
+		Vector4::Vector4(float uniform)
+			: m_x(uniform)
+			, m_y(uniform)
+			, m_z(uniform)
+			, m_w(uniform)
+		{
+			Lenght();
+		}
+
 		Vector4::Vector4(float x, float y, float z, float w)
 			: m_x(x)
 			, m_y(y)

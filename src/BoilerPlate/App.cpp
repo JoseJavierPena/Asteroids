@@ -23,8 +23,10 @@ namespace Engine
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 
-		m_player = new Asteroids::Entities::PlayerShip(m_width, m_height);
-		//m_backgroundColor = Colors::Color(0.0f,0.0f,0.0f);
+		// 
+		m_player = new Asteroids::Entities::PlayerShip(m_width, m_height); 
+		m_backgroundColor = Colors::Color(0.0f,0.0f,0.0f); // Change color = black
+		m_asteroid = new Asteroids::Entities::Asteroid(m_width, m_height);
 	}
 
 	App::~App()
@@ -33,6 +35,12 @@ namespace Engine
 		{
 			delete m_player;
 		}
+
+		if (m_asteroid)
+		{
+			delete m_asteroid;
+		}
+
 		CleanupSDL();
 	}
 
@@ -90,22 +98,23 @@ namespace Engine
 		{
 		case SDL_SCANCODE_W:
 			SDL_Log("Moving forward");
-			m_player->MoveForward(Engine::Math::Vector2(0.0f, movingUnit));
+			m_player->MoveForward();
 			break;
 		case SDL_SCANCODE_A:
 			SDL_Log("Moving left");
-			m_player->MoveForward(Engine::Math::Vector2(-movingUnit, 0.0f));
+			m_player->RotateLeft();
 			break;
 		case SDL_SCANCODE_D:
 			SDL_Log("Moving right");
-			m_player->MoveForward(Engine::Math::Vector2(movingUnit, 0.0f));
+			m_player->RotateRight();
 			break;
 		case SDL_SCANCODE_S:
-			SDL_Log("Moving down");
-			m_player->MoveForward(Engine::Math::Vector2(0.0f, -movingUnit));
+			//SDL_Log("Moving down");
+			//m_player->MoveForward(/*Engine::Math::Vector2(0.0f, -movingUnit)*/0.f, -movingUnit);
+			// TODO: Need brakes for the speed of the ship
 			break;
 		default:			
-			SDL_Log("%S was pressed.", keyBoardEvent.keysym.scancode);
+			SDL_Log("Physical %s key acting as %s key", SDL_GetScancodeName(keyBoardEvent.keysym.scancode), SDL_GetKeyName(keyBoardEvent.keysym.sym));
 			break;
 		}
 	}
@@ -114,6 +123,9 @@ namespace Engine
 	{
 		switch (keyBoardEvent.keysym.scancode)
 		{
+		case SDL_SCANCODE_W:
+			m_player->NotMoving();
+			break;
 		case SDL_SCANCODE_ESCAPE:
 			OnExit();
 			break;
@@ -129,6 +141,8 @@ namespace Engine
 
 		// Update code goes here
 		//
+		m_player->Update(DESIRED_FRAME_TIME);
+		m_asteroid->Update(DESIRED_FRAME_TIME);
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();
 		double nextTimeFrame = startTime + DESIRED_FRAME_TIME;
@@ -148,12 +162,14 @@ namespace Engine
 
 	void App::Render()
 	{
-		//glClearColor(m_backgroundColor.m_color.m_x, m_backgroundColor.m_color.m_y, m_backgroundColor.m_color.m_z, m_backgroundColor.m_alpha);
-		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
+		glClearColor(m_backgroundColor.m_color.m_x, m_backgroundColor.m_color.m_y, m_backgroundColor.m_color.m_z, m_backgroundColor.m_alpha);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// Drawing ship
 		m_player->Render();
+
+		// Drawing an asteroid
+		m_asteroid->Render();
 
 		SDL_GL_SwapWindow(m_mainWindow);
 	}

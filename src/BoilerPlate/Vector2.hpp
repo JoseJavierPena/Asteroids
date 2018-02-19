@@ -3,8 +3,6 @@
 #ifndef _VECTOR2_H_
 #define _VECTOR2_H_
 
-#include<iostream>
-
 namespace Engine
 {
 	namespace Math
@@ -58,5 +56,4 @@ namespace Engine
 		};
 	}
 }
-
 #endif // !_VECTOR2_H_

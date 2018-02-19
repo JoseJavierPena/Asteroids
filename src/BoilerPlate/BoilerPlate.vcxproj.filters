@@ -26,6 +26,12 @@
     <ClCompile Include="Vector4.cpp">
       <Filter>Math\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Asteroid.cpp">
+      <Filter>Game\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Game\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDLEvent.hpp" />
@@ -35,9 +41,6 @@
     </ClInclude>
     <ClInclude Include="MathUtilities.hpp">
       <Filter>Math\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerShip.hpp">
-      <Filter>Game\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="App.hpp">
       <Filter>Engine\Header files</Filter>
@@ -50,6 +53,15 @@
     </ClInclude>
     <ClInclude Include="Vector4.hpp">
       <Filter>Math\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Asteroid.hpp">
+      <Filter>Game\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerShip.hpp">
+      <Filter>Game\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.hpp">
+      <Filter>Game\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
