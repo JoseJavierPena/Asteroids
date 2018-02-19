@@ -3,12 +3,13 @@
 #define _ASTEROID_HPP_
 
 #include "Vector2.hpp"
+#include "Entity.hpp"
 
 namespace Asteroids
 {
 	namespace Entities
 	{
-		class Asteroid
+		class Asteroid : Entity
 		{
 		public:
 
@@ -31,8 +32,8 @@ namespace Asteroids
 			*		PUBLIC FUNCTION
 			============================*/
 			void Render();
-			void Update();
-			void GetSize();
+			void Update(float);
+			AsteroidSize::SIZE GetSize();
 
 			/*============================
 			*		  MEMBERS
@@ -40,6 +41,8 @@ namespace Asteroids
 			Engine::Math::Vector2* m_position;
 			float m_width;
 			float m_height;
+			Asteroid::AsteroidSize::SIZE m_size;
+			float m_angle;
 
 		};
 

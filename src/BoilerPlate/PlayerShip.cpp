@@ -11,34 +11,33 @@ namespace Asteroids
 			: m_angle(0.0f)
 			, m_thruster(false)
 			, m_moving(false)
+			, m_velocity(Engine::Math::Vector2())
 		{
-			m_position = new Engine::Math::Vector2(Engine::Math::Vector2::origin);
+			m_radius = 0.f;
+			m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
 
-			maxWidth = width / 2.0f;
-			minWidth = -width / 2.0f;
-
-			maxHeight = height / 2.0f;
-			minHeight = -height / 2.0f;
+			m_width = width + 50;
+			m_height = height + 50;
 		}
 
-		void PlayerShip::MoveForward(/*Engine::Math::Vector2 a*/ float x, float y)
+		void PlayerShip::MoveForward()
 		{
 			// TODO: Redo position and move to new Class Entity
-			/*float x = m_position->m_x + a.m_x;
-			float y = m_position->m_y + a.m_y;*/
 			m_thruster = true; 
 			m_moving = true;
 
-			m_position->m_x += Asteroids::Entities::Entity::Wraparound(x, minWidth, maxWidth);
-			m_position->m_y += Asteroids::Entities::Entity::Wraparound(y, minHeight, maxHeight);
+			ApplyImpulse();	
 		}
 
 		void PlayerShip::Render()
 		{
 			glLoadIdentity();
 
+			// Wrap around 
+			WrapAround(0.0f, -50.f, 50.f);
+
 			// Translates a vector
-			glTranslatef(m_position->m_x, m_position->m_y, 0.0f);
+			glTranslatef(m_position.m_x, m_position.m_y, 0.0f);
 
 			// Rotate the ship
 			glRotatef(m_angle, 0.0f, 0.0f, 1.0f);
@@ -62,11 +61,17 @@ namespace Asteroids
 			}
 		}
 
-		// TODO
-		void PlayerShip::Update()
+		void PlayerShip::Update(float deltaTime)
 		{
 			if (!m_moving) m_thruster = false;
 
+			// Applying drag
+			m_velocity = Engine::Math::Vector2(m_velocity.m_x * Constants::DRAG, m_velocity.m_y * Constants::DRAG);
+
+			// Calculating new position
+			Engine::Math::Vector2 pos = m_position + m_velocity;
+
+			Entity::Update(deltaTime);
 		}
 
 		void PlayerShip::RotateLeft()

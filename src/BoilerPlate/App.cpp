@@ -98,7 +98,7 @@ namespace Engine
 		{
 		case SDL_SCANCODE_W:
 			SDL_Log("Moving forward");
-			m_player->MoveForward(/*Engine::Math::Vector2(0.0f, movingUnit)*/ 0.f, movingUnit);
+			m_player->MoveForward();
 			break;
 		case SDL_SCANCODE_A:
 			SDL_Log("Moving left");
@@ -123,6 +123,9 @@ namespace Engine
 	{
 		switch (keyBoardEvent.keysym.scancode)
 		{
+		case SDL_SCANCODE_W:
+			m_player->NotMoving();
+			break;
 		case SDL_SCANCODE_ESCAPE:
 			OnExit();
 			break;
@@ -138,6 +141,8 @@ namespace Engine
 
 		// Update code goes here
 		//
+		m_player->Update(DESIRED_FRAME_TIME);
+		m_asteroid->Update(DESIRED_FRAME_TIME);
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();
 		double nextTimeFrame = startTime + DESIRED_FRAME_TIME;

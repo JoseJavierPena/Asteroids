@@ -32,10 +32,15 @@ namespace Asteroids
 			glEnd();
 		}
 
-		void Asteroid::Update()
-		{}
+		void Asteroid::Update(float deltaTime)
+		{
+			m_angle += 120 + deltaTime;
+			Entity::Update(deltaTime);
+		}
 
-		void Asteroid::GetSize()
-		{}
+		Asteroid::AsteroidSize::SIZE Asteroid::GetSize()
+		{
+			return m_size;
+		}
 	}
 }
