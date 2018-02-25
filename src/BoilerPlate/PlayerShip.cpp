@@ -22,7 +22,7 @@ namespace Asteroids
 
 		void PlayerShip::MoveForward()
 		{
-			// TODO: Redo position and move to new Class Entity
+			// TODO: Impulse not working
 			m_thruster = true; 
 			m_moving = true;
 
@@ -43,7 +43,7 @@ namespace Asteroids
 			glRotatef(m_angle, 0.0f, 0.0f, 1.0f);
 
 			// Draws the ship
-			glBegin(GL_LINE_LOOP);
+			glBegin(GL_POLYGON);
 			glVertex2f(0.0f, 20.0f);
 			glVertex2f(12.0f, -10.0f);
 			glVertex2f(6.0f, -4.0f);
@@ -53,7 +53,7 @@ namespace Asteroids
 
 			if (m_thruster)
 			{
-				glBegin(GL_LINE_LOOP);
+				glBegin(GL_POLYGON);
 				glVertex2f(6.0f, -4.0f);
 				glVertex2f(0.0f, -16.0f);
 				glVertex2f(-6.0f, -4.0f);

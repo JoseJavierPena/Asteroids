@@ -1,0 +1,15 @@
+TODO list:
+
+		- REFACTOR
+		
+		- Make the moveForward function of the ship to work
+		- Make the ship move were the tip is
+		- Make the update of the ship
+		- Create a better asteroid
+		- Make bullet
+		- Make the bullet come out of the tip of the ship
+		- Asteroids after taking bullet go into debris
+	
+	Other things to get care of:
+		- Make score and show it
+		- Draw the ship's life
