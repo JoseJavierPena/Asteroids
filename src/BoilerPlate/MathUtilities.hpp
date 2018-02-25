@@ -6,6 +6,9 @@
 #include <algorithm>
 #include <string>
 
+//
+#include "Constants.hpp"
+
 namespace Engine
 {
 	namespace Math

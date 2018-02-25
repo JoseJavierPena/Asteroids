@@ -2,8 +2,10 @@
 #ifndef _ASTEROID_HPP_
 #define _ASTEROID_HPP_
 
+//
 #include "Vector2.hpp"
 #include "Entity.hpp"
+#include "Constants.hpp"
 
 namespace Asteroids
 {
@@ -13,6 +15,9 @@ namespace Asteroids
 		{
 		public:
 
+			/*============================
+			*	  	  ENUMERATOR
+			============================*/
 			struct AsteroidSize
 			{
 				enum SIZE
@@ -33,17 +38,22 @@ namespace Asteroids
 			============================*/
 			void Render();
 			void Update(float);
-			AsteroidSize::SIZE GetSize();
+			AsteroidSize::SIZE GetSize() { return m_size; };
+			Engine::Math::Vector2 GetPosition() { return m_position; };
+
 
 			/*============================
 			*		  MEMBERS
 			============================*/
-			Engine::Math::Vector2* m_position;
+			Engine::Math::Vector2 m_position;
 			float m_width;
 			float m_height;
 			Asteroid::AsteroidSize::SIZE m_size;
 			float m_angle;
-
+			float m_mass;
+			//float m_radius;
+			//float m_angle;
+			Engine::Math::Vector2 m_velocity;
 		};
 
 	}

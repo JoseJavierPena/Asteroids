@@ -9,7 +9,7 @@ namespace Asteroids
 	{
 		Asteroid::Asteroid(int width, int height)
 		{
-			m_position = new Engine::Math::Vector2(Engine::Math::Vector2::origin);
+			m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
 			m_width = width;
 			m_height = height;
 		}
@@ -19,7 +19,7 @@ namespace Asteroids
 			glLoadIdentity();
 
 			// Translates a vector
-			glTranslatef(m_position->m_x, m_position->m_y, 0.0f);
+			glTranslatef(m_position.m_x, m_position.m_y, 0.0f);
 
 			// TODO: Create a better asteroid
 
@@ -36,11 +36,6 @@ namespace Asteroids
 		{
 			m_angle += 120 + deltaTime;
 			Entity::Update(deltaTime);
-		}
-
-		Asteroid::AsteroidSize::SIZE Asteroid::GetSize()
-		{
-			return m_size;
 		}
 	}
 }

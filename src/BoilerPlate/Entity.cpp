@@ -12,7 +12,7 @@ namespace Asteroids
 		{
 			m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
 			m_mass = 0.5f;
-			m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Constants::ANGLE_OFFSET);
+			m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Consts::ANGLE_OFFSET);
 
 			m_maxWidth = width / 2.0f;
 			m_minWidth = -width / 2.0f;
@@ -29,9 +29,21 @@ namespace Asteroids
 			return x_axis;
 		}
 
+		bool Entity::IsColliding(Entity *rhs)
+		{
+			if(!rhs)
+				return false;
+			float x = m_position.m_x - rhs->m_position.m_x;
+			float y = m_position.m_y - rhs->m_position.m_y;
+			float rad = m_radius + rhs->m_radius;
+			float distanceSqared = (x * x) + (y * y);
+
+			return rad * rad >= distanceSqared;
+		}
+
 		Engine::Math::Vector2 Entity::Impulse()
 		{
-			float impulse = (Constants::THRUST / m_mass);
+			float impulse = (Consts::THRUST / m_mass);
 			float x = impulse * std::cosf(m_angleInRads);
 			float y = impulse * std::sinf(m_angleInRads);
 

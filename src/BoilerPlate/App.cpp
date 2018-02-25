@@ -27,18 +27,16 @@ namespace Engine
 		m_player = new Asteroids::Entities::PlayerShip(m_width, m_height); 
 		m_backgroundColor = Colors::Color(0.0f,0.0f,0.0f); // Change color = black
 		m_asteroid = new Asteroids::Entities::Asteroid(m_width, m_height);
+
+		// 
+		m_game = new AsteroidsGame::Game(m_width, m_height);
 	}
 
 	App::~App()
 	{
-		if (m_player)
+		if (m_game)
 		{
-			delete m_player;
-		}
-
-		if (m_asteroid)
-		{
-			delete m_asteroid;
+			delete m_game;
 		}
 
 		CleanupSDL();
