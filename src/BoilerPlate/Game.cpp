@@ -11,8 +11,8 @@ namespace AsteroidsGame
 
 	Game::~Game()
 	{
-		delete m_ship;
-		m_ship = NULL;
+		/*delete m_ship;
+		m_ship = NULL;*/
 	}
 
 	void Game::InitGame()
@@ -48,7 +48,7 @@ namespace AsteroidsGame
 			m_ship->Update(deltaTime);
 
 			//
-			CheckCollision();
+			//CheckCollision();
 
 			// Update asteroids
 			CreateAsteroids(1, Asteroids::Entities::Asteroid::AsteroidSize::SIZE::BIG, EConsts::null);
@@ -70,7 +70,7 @@ namespace AsteroidsGame
 	void Game::CheckCollision()
 	{
 		// Checking if the ship is not colliding
-		//if (!m_ship->CanCollide()) return;
+		if (!m_ship->CanCollide()) return;
 
 		bool bulletHit = false;
 	
@@ -83,52 +83,52 @@ namespace AsteroidsGame
 			{
 				//TODO: Redo
 				// Checking player collision
-				if (m_ship->IsColliding(kAsteroid))
-				{
-					// Getting size and position for asteroids
-					Asteroids::Entities::Asteroid::AsteroidSize::SIZE currentSz = kAsteroid->GetSize();
-					Engine::Math::Vector2 position = temp->GetPosition();
+				//if (m_ship->IsColliding(kAsteroid))
+				//{
+				//	// Getting size and position for asteroids
+				//	Asteroids::Entities::Asteroid::AsteroidSize::SIZE currentSz = kAsteroid->GetSize();
+				//	Engine::Math::Vector2 position = temp->GetPosition();
 
-					// Deleting asteroids
-					DeleteAsteroids(temp);
+				//	// Deleting asteroids
+				//	DeleteAsteroids(temp);
 
-					// Creating remains of the asteroids
-					CreateRemainsAsteroid(currentSz, position);
+				//	// Creating remains of the asteroids
+				//	CreateRemainsAsteroid(currentSz, position);
 
-					// Respawn player ship
-					m_ship->Respawn();
+				//	// Respawn player ship
+				//	m_ship->Respawn();
 
-					//Player lives code goes here
-					//
+				//	//Player lives code goes here
+				//	//
 
-					// Score code goes here
-					//
+				//	// Score code goes here
+				//	//
 
-					break;
-				}
+				//	break;
+				//}
 
 				// Checking bullet collision
 				for (int counter = 0; counter < static_cast<int>(m_ship->m_bullets.size()); counter++)
 				{
 					//TODO: Redo
-					if (m_ship->m_bullets[counter]->IsColliding(kAsteroid))
-					{
-						// Getting size for remains of the asteroids
-						Asteroids::Entities::Asteroid::AsteroidSize::SIZE currentSize = kAsteroid->GetSize();
-						Engine::Math::Vector2 currentPosition = kAsteroid->GetPosition();
+					//if (m_ship->m_bullets[counter]->IsColliding(kAsteroid))
+					//{
+					//	// Getting size for remains of the asteroids
+					//	Asteroids::Entities::Asteroid::AsteroidSize::SIZE currentSize = kAsteroid->GetSize();
+					//	Engine::Math::Vector2 currentPosition = kAsteroid->GetPosition();
 
-						//
+					//	//
 
-						//Deleting asteroid
-						DeleteAsteroids(temp);
+					//	//Deleting asteroid
+					//	DeleteAsteroids(temp);
 
-						// Deleting bullet
-						m_ship->DeleteBullet(m_ship->m_bullets[counter]);
+					//	// Deleting bullet
+					//	m_ship->DeleteBullet(m_ship->m_bullets[counter]);
 
-						//Creating remains of the asteroids
-						CreateRemainsAsteroid(currentSize, currentPosition);
-						bulletHit = true;
-					}
+					//	//Creating remains of the asteroids
+					//	CreateRemainsAsteroid(currentSize, currentPosition);
+					//	bulletHit = true;
+					//}
 				}
 
 				if (bulletHit == true)
@@ -137,15 +137,27 @@ namespace AsteroidsGame
 		}
 	}
 
-	void Game::DeleteAsteroids(Asteroids::Entities::Asteroid* kAsteroid)
-	{
-		m_asteroids.erase(remove(m_asteroids.begin(), m_asteroids.end(), kAsteroid), m_asteroids.end());
-		delete kAsteroid;
-	}
-
 	// TODO: Do this
-	void Game::CreateAsteroids(int amount, Asteroids::Entities::Asteroid::AsteroidSize::SIZE, Engine::Math::Vector2)
-	{}
+	void Game::CreateAsteroids(int amount, Asteroids::Entities::Asteroid::AsteroidSize::SIZE size, Engine::Math::Vector2 pos)
+	{
+		if (pos == EConsts::null)
+		{
+			for (int counter = 0; counter < amount; counter++)
+			{
+				Asteroids::Entities::Asteroid* kAsteroid = new Asteroids::Entities::Asteroid(m_width, m_height);
+				m_asteroids.push_back(kAsteroid);
+			}
+			return;
+		}
+		else
+		{
+			for (int counter = 0; counter < amount; counter++)
+			{
+				Asteroids::Entities::Asteroid* kAsteroid = new Asteroids::Entities::Asteroid(size, pos, m_width, m_height);
+				m_asteroids.push_back(kAsteroid);
+			}
+		}
+	}
 
 	void Game::CreateRemainsAsteroid(Asteroids::Entities::Asteroid::AsteroidSize::SIZE size, Engine::Math::Vector2 pos)
 	{
@@ -157,8 +169,4 @@ namespace AsteroidsGame
 		else if (size == Asteroids::Entities::Asteroid::AsteroidSize::SIZE::BIG)
 			CreateAsteroids(2, Asteroids::Entities::Asteroid::AsteroidSize::SIZE::BIG, pos);
 	}
-
-	// TODO: For later
-	void Game::ShowLives()
-	{}
 }

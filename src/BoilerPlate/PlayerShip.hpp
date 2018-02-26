@@ -35,7 +35,7 @@ namespace Asteroids
 			void NotMoving() { m_moving = false; };
 			void Shoot();
 			void Respawn();
-			void CanCollide() const;
+			bool CanCollide() const;
 			void Clean() { EraseAllBullets(); };
 			void DeleteBullet(Bullet* );
 
@@ -53,7 +53,7 @@ namespace Asteroids
 			*	  PRIVATE FUNCTIONS
 			============================*/
 			void ApplyImpulse() { m_velocity += Impulse(); };
-			void ClampSpeed(float);
+			void ClampSpeed(float) override;
 			void Reset();
 			void EraseAllBullets();
 
@@ -67,6 +67,7 @@ namespace Asteroids
 			bool m_moving;
 			bool m_inmune;
 			int m_usedBullets;
+			float m_currentSpeed;
 		};
 	}
 }
