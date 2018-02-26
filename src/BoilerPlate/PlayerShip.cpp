@@ -10,25 +10,27 @@ namespace Asteroids
 		PlayerShip::PlayerShip(int width, int height)
 			: m_angle(0.0f)
 			, m_thruster(false)
-			, m_moving(false)
+			, m_moving(false) , m_usedBullets(0)
 			, m_velocity(Engine::Math::Vector2())
+			, Entity(width, height)
 		{
 			m_radius = 0.f;
 			m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
-
+			m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Consts::ANGLE_OFFSET);
 			m_width = width + 50;
 			m_height = height + 50;
 		}
 
 		void PlayerShip::MoveForward()
 		{
-			// TODO: Redo position and move to new Class Entity
+			// TODO: Redo
 			m_thruster = true; 
 			m_moving = true;
 
 			ApplyImpulse();	
 		}
 
+		// TODO: Redo
 		void PlayerShip::Render()
 		{
 			glLoadIdentity();
@@ -53,7 +55,7 @@ namespace Asteroids
 
 			if (m_thruster)
 			{
-				glBegin(GL_LINE_LOOP);
+				glBegin(GL_POLYGON);
 				glVertex2f(6.0f, -4.0f);
 				glVertex2f(0.0f, -16.0f);
 				glVertex2f(-6.0f, -4.0f);
@@ -65,12 +67,16 @@ namespace Asteroids
 		{
 			if (!m_moving) m_thruster = false;
 
+			// Clamp the speed
+			//ClampSpeed(Consts::MAX_SPEED_PLAYER);
+
 			// Applying drag
-			m_velocity = Engine::Math::Vector2(m_velocity.m_x * Constants::DRAG, m_velocity.m_y * Constants::DRAG);
+			m_velocity = Engine::Math::Vector2(m_velocity.m_x * Consts::DRAG , m_velocity.m_y * Consts::DRAG);
 
 			// Calculating new position
 			Engine::Math::Vector2 pos = m_position + m_velocity;
 
+			// TODO: Redo this
 			Entity::Update(deltaTime);
 		}
 
@@ -86,6 +92,21 @@ namespace Asteroids
 			float new_angle = -5.0f;
 			m_angle += new_angle;
 			Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
+		}
+
+		bool PlayerShip::CanCollide() const
+		{
+			return m_inmune;
+		}
+
+		void PlayerShip::ClampSpeed(float max_speed)
+		{
+			float speed = std::fabsf(m_velocity.Lenght());
+
+			if (speed > max_speed)
+			{
+				m_velocity = Engine::Math::Vector2((m_velocity.m_x / speed) * max_speed, (m_velocity.m_y / speed) * max_speed);
+			}
 		}
 	}
 }

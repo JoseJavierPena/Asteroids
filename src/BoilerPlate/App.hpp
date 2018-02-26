@@ -9,9 +9,10 @@
 // Asteroids
 #include "SDLEvent.hpp"
 #include "TimeManager.hpp"
-#include "PlayerShip.hpp"
+
+//
 #include "Color.hpp"
-#include "Asteroid.hpp"
+#include "Game.hpp"
 
 namespace Engine
 {
@@ -71,9 +72,12 @@ namespace Engine
 		Engine::TimeManager*				m_timer;
 
 		//
-		Asteroids::Entities::PlayerShip* m_player;
 		Colors::Color m_backgroundColor;
+		AsteroidsGame::Game* m_game;
+
+		//
 		Asteroids::Entities::Asteroid* m_asteroid;
+		Asteroids::Entities::PlayerShip* m_ship;
 	};
 }
 #endif /* GAME_HPP */

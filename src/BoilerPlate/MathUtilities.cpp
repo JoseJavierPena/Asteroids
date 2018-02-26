@@ -3,7 +3,6 @@
 namespace Engine
 {
 	namespace Math {
-		float M_PI = 3.14159f;
 
 		inline int MathUtilities::GetNearestInt(int a)
 		{
@@ -21,12 +20,12 @@ namespace Engine
 
 		float MathUtilities::ConvertRadToDegrees(float angleInRadians)
 		{
-			return angleInRadians * (M_PI / 180);
+			return angleInRadians * (Consts::PI / 180);
 		}
 
 		float MathUtilities::ConvertDegreesToRad(float angleInDegrees)
 		{
-			return angleInDegrees * (180 / M_PI);
+			return angleInDegrees * (180 / Consts::PI);
 		}
 
 		inline int MathUtilities::IsPowerOfTwo(int n)
