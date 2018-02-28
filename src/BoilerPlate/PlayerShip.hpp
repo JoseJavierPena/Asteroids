@@ -60,7 +60,7 @@ namespace Asteroids
 			/*============================
 			*		PRIVATE MEMBERS
 			============================*/
-			Engine::Math::Vector2 m_velocity;;
+			Engine::Math::Vector2 m_velocity;
 			float m_mass;
 			float m_angle;
 			bool m_thruster;

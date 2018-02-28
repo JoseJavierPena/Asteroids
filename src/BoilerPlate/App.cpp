@@ -3,8 +3,7 @@
 #include <algorithm>
 
 // OpenGL includes
-#include <GL/glew.h>
-#include <SDL2/SDL_opengl.h>
+#include "IncludeGL.hpp"
 
 namespace Engine
 {
@@ -29,14 +28,14 @@ namespace Engine
 		//
 		m_ship = new Asteroids::Entities::PlayerShip(m_width, m_height);
 		m_asteroid = new Asteroids::Entities::Asteroid(m_width, m_height);
-	}
+	};
 
 	App::~App()
 	{
 		delete m_game;
 
 		CleanupSDL();
-	}
+	};
 
 	void App::Execute()
 	{
@@ -62,7 +61,7 @@ namespace Engine
 			Update();
 			Render();
 		}
-	}
+	};
 
 	bool App::Init()
 	{
@@ -84,7 +83,7 @@ namespace Engine
 		m_state = GameState::INIT_SUCCESSFUL;
 
 		return true;
-	}
+	};
 
 	void App::OnKeyDown(SDL_KeyboardEvent keyBoardEvent)
 	{		
@@ -109,7 +108,7 @@ namespace Engine
 			SDL_Log("Physical %s key acting as %s key", SDL_GetScancodeName(keyBoardEvent.keysym.scancode), SDL_GetKeyName(keyBoardEvent.keysym.sym));
 			break;
 		}
-	}
+	};
 
 	void App::OnKeyUp(SDL_KeyboardEvent keyBoardEvent)
 	{
@@ -125,7 +124,7 @@ namespace Engine
 			//DO NOTHING
 			break;
 		}
-	}
+	};
 
 	void App::Update()
 	{
@@ -153,7 +152,7 @@ namespace Engine
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 
 		m_nUpdates++;
-	}
+	};
 
 	void App::Render()
 	{
@@ -168,7 +167,7 @@ namespace Engine
 		//	m_game->RenderGame();
 
 		SDL_GL_SwapWindow(m_mainWindow);
-	}
+	};
 
 	bool App::SDLInit()
 	{
@@ -210,7 +209,7 @@ namespace Engine
 		SDL_GL_SetSwapInterval(0);
 
 		return true;
-	}
+	};
 
 	void App::SetupViewport()
 	{
@@ -235,7 +234,7 @@ namespace Engine
 		// Setting Mode to GL_MODELVIEW
 		//
 		glMatrixMode(GL_MODELVIEW);
-	}
+	};
 
 	bool App::GlewInit()
 	{
@@ -247,7 +246,7 @@ namespace Engine
 		}
 
 		return true;
-	}
+	};
 
 	void App::CleanupSDL()
 	{
@@ -257,8 +256,8 @@ namespace Engine
 		SDL_DestroyWindow(m_mainWindow);
 
 		SDL_Quit();
-	}
-
+	};
+	
 	void App::OnResize(int width, int height)
 	{
 		// TODO: Add resize functionality
@@ -267,7 +266,7 @@ namespace Engine
 		m_height = height;
 
 		SetupViewport();
-	}
+	};
 
 	void App::OnExit()
 	{
@@ -278,5 +277,5 @@ namespace Engine
 		// Cleanup SDL pointers
 		//
 		CleanupSDL();
-	}
+	};
 }

@@ -9,24 +9,24 @@ namespace Engine
 			m_intToFloat = (float)(a);
 			//std::cout << intToFloat << std::endl;
 			return m_intToFloat;
-		}
+		};
 
 		inline float MathUtilities::RoundFloatToInt(float a)
 		{
 			m_floatToInt = (int)roundf(a);
 			//std::cout << floatToInt << std::endl;
 			return m_floatToInt;
-		}
+		};
 
 		float MathUtilities::ConvertRadToDegrees(float angleInRadians)
 		{
 			return angleInRadians * (Consts::PI / 180);
-		}
+		};
 
 		float MathUtilities::ConvertDegreesToRad(float angleInDegrees)
 		{
 			return angleInDegrees * (180 / Consts::PI);
-		}
+		};
 
 		inline int MathUtilities::IsPowerOfTwo(int n)
 		{
@@ -34,12 +34,12 @@ namespace Engine
 				n /= 2;
 
 			return (n == 1);
-		}
+		};
 
 		double MathUtilities::AngularDistances(double, double)
 		{
 			return 0.0;
-		}
+		};
 
 		template<class T>
 		inline T MathUtilities::MaximumN(T arr[4])
@@ -54,9 +54,9 @@ namespace Engine
 			{
 				naxN = std::max(arr[i]);
 			}
-			//std::cout << maxN << std::endl;
+
 			return maxN;
-		}
+		};
 
 		template<class T>
 		inline T MathUtilities::MinimumN(T arr[4])
@@ -71,9 +71,9 @@ namespace Engine
 			{
 				minN = std::min(arr[i]);
 			}
-			//std::cout << minN << std::endl;
+
 			return minN;
-		}
+		};
 
 		template<class T>
 		inline T MathUtilities::Clamp(T number)
@@ -82,7 +82,7 @@ namespace Engine
 			int clamp;
 			clamp = number < min ? min : number;
 			return clamp > max ? max : clamp;
-		}
+		};
 
 		template<class T>
 		inline T MathUtilities::Interpolate(T n)
@@ -90,6 +90,6 @@ namespace Engine
 			int start = 0.0;
 			int end = 1.0;
 			return n;
-		}
+		};
 	}
 }

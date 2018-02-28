@@ -1,7 +1,7 @@
 #include "Asteroid.hpp"
 
-#include <GL\glew.h>
-#include <SDL2\SDL_opengl.h>
+// OpgenGL includes
+#include "IncludeGL.hpp"
 
 namespace Asteroids
 {
@@ -22,7 +22,7 @@ namespace Asteroids
 			m_velocity = Engine::Math::Vector2();
 			RandomPos(m_height, m_width);
 			//RandomPoints();
-		}
+		};
 
 		// TODO: Redo this
 		Asteroid::Asteroid(AsteroidSize::SIZE size, Engine::Math::Vector2 pos, const int width, const int height)
@@ -37,7 +37,7 @@ namespace Asteroids
 			m_height = height;
 			//SizeFactor();
 			m_velocity = Engine::Math::Vector2();
-		}
+		};
 
 		void Asteroid::Render()
 		{
@@ -59,7 +59,7 @@ namespace Asteroids
 			glEnd();
 
 			//Entities::Entity::Render(GL_POLYGON, m_position, m_color, m_angle);
-		}
+		};
 
 		void Asteroid::Update(float deltaTime)
 		{
@@ -80,6 +80,6 @@ namespace Asteroids
 
 			// Translation to newPos
 			Translate(newPos);
-		}
+		};
 	}
 }

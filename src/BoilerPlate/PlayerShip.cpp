@@ -1,7 +1,7 @@
 #include "PlayerShip.hpp"
 
-#include <GL\glew.h>
-#include <SDL2\SDL_opengl.h>
+// OpgenGL includes
+#include "IncludeGL.hpp"
 
 namespace Asteroids
 {
@@ -19,7 +19,7 @@ namespace Asteroids
 			m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Consts::ANGLE_OFFSET);
 			m_width = width + 50;
 			m_height = height + 50;
-		}
+		};
 
 		void PlayerShip::MoveForward()
 		{
@@ -28,7 +28,7 @@ namespace Asteroids
 			m_moving = true;
 
 			ApplyImpulse();	
-		}
+		};
 
 		// TODO: Redo
 		void PlayerShip::Render()
@@ -61,7 +61,7 @@ namespace Asteroids
 				glVertex2f(-6.0f, -4.0f);
 				glEnd();
 			}
-		}
+		};
 
 		void PlayerShip::Update(float deltaTime)
 		{
@@ -78,26 +78,26 @@ namespace Asteroids
 
 			// TODO: Redo this
 			Entity::Update(deltaTime);
-		}
+		};
 
 		void PlayerShip::RotateLeft()
 		{
 			float new_angle = 5.0f;
 			m_angle += new_angle;
 			Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
-		}
+		};
 
 		void PlayerShip::RotateRight()
 		{
 			float new_angle = -5.0f;
 			m_angle += new_angle;
 			Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
-		}
+		};
 
 		bool PlayerShip::CanCollide() const
 		{
 			return m_inmune;
-		}
+		};
 
 		void PlayerShip::ClampSpeed(float max_speed)
 		{
@@ -107,6 +107,6 @@ namespace Asteroids
 			{
 				m_velocity = Engine::Math::Vector2((m_velocity.m_x / speed) * max_speed, (m_velocity.m_y / speed) * max_speed);
 			}
-		}
+		};
 	}
 }

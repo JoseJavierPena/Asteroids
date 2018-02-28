@@ -1,19 +1,20 @@
 #include "Game.hpp"
 
-#include <SDL2\SDL_opengl.h>
+// OpgenGL includes
+#include "IncludeGL.hpp"
 
 namespace AsteroidsGame
 {
 	Game::Game(int width, int height)
-		: m_width(width) , m_height (height)
+		: m_width(width), m_height(height)
 		, m_lives(3), m_score(0)
-	{}
+	{};
 
 	Game::~Game()
 	{
-		/*delete m_ship;
-		m_ship = NULL;*/
-	}
+		delete m_ship;
+		m_ship = NULL;
+	};
 
 	void Game::InitGame()
 	{
@@ -21,7 +22,7 @@ namespace AsteroidsGame
 
 		// Creating the asteroids
 		CreateAsteroids(1, Asteroids::Entities::Asteroid::AsteroidSize::SIZE::BIG, EConsts::null);
-	}
+	};
 
 	void Game::RenderGame()
 	{
@@ -35,7 +36,7 @@ namespace AsteroidsGame
 
 		for (int counter = 0; counter < static_cast<int>(m_asteroids.size()); counter++)
 			m_asteroids[counter]->Render();
-	}
+	};
 
 	void Game::Update(float deltaTime)
 	{
@@ -48,7 +49,7 @@ namespace AsteroidsGame
 			m_ship->Update(deltaTime);
 
 			//
-			//CheckCollision();
+			CheckCollision();
 
 			// Update asteroids
 			CreateAsteroids(1, Asteroids::Entities::Asteroid::AsteroidSize::SIZE::BIG, EConsts::null);
@@ -59,13 +60,13 @@ namespace AsteroidsGame
 		//
 		for (int counter = 0; counter < static_cast<int>(m_asteroids.size()); counter++)
 			m_asteroids.at(counter)->Update(deltaTime);
-	}
+	};
 
 	void Game::FinishGame()
 	{
 		// Stop game object
 		m_state = GameState::State::STOPPED;
-	}
+	};
 
 	void Game::CheckCollision()
 	{
@@ -135,9 +136,8 @@ namespace AsteroidsGame
 					break;
 			}
 		}
-	}
+	};
 
-	// TODO: Do this
 	void Game::CreateAsteroids(int amount, Asteroids::Entities::Asteroid::AsteroidSize::SIZE size, Engine::Math::Vector2 pos)
 	{
 		if (pos == EConsts::null)
@@ -157,7 +157,7 @@ namespace AsteroidsGame
 				m_asteroids.push_back(kAsteroid);
 			}
 		}
-	}
+	};
 
 	void Game::CreateRemainsAsteroid(Asteroids::Entities::Asteroid::AsteroidSize::SIZE size, Engine::Math::Vector2 pos)
 	{
@@ -168,5 +168,5 @@ namespace AsteroidsGame
 
 		else if (size == Asteroids::Entities::Asteroid::AsteroidSize::SIZE::BIG)
 			CreateAsteroids(2, Asteroids::Entities::Asteroid::AsteroidSize::SIZE::BIG, pos);
-	}
+	};
 }
